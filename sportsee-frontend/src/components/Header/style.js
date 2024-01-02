@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import sportseeLogo from "../assets/images/sportsee-logo.png";
 
 const HeaderTag = styled.header`
   display: flex;
@@ -40,28 +39,13 @@ const HeaderNavLink = styled(NavLink)`
 
   &.active {
     text-decoration: underline;
+  }
 `;
 
-function Header() {
-  return (
-    <HeaderTag>
-      <HeaderImage src={sportseeLogo} alt="sportsee logo" />
-      <HeaderUnorderedList>
-        <HeaderList>
-          <HeaderNavLink to="/">Accueil</HeaderNavLink>
-        </HeaderList>
-        <HeaderList>
-          <HeaderNavLink to="/profile">Profil</HeaderNavLink>
-        </HeaderList>
-        <HeaderList>
-          <HeaderNavLink to="/settings">Réglages</HeaderNavLink>
-        </HeaderList>
-        <HeaderList>
-          <HeaderNavLink to="/community">Communauté</HeaderNavLink>
-        </HeaderList>
-      </HeaderUnorderedList>
-    </HeaderTag>
-  );
-}
-
-export default Header;
+export {
+  HeaderTag,
+  HeaderImage,
+  HeaderUnorderedList,
+  HeaderList,
+  HeaderNavLink,
+};

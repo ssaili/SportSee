@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import GlobalStyle from "./style";
 import ComingSoon from "./pages/ComingSoon/index";
-import { createGlobalStyle } from "styled-components";
-import Dashboard from "./pages/Dashboard";
-import Profile from "./pages/Profile";
-import Error from "./pages/Error";
+import Profile from "./pages/Profile/index";
+import Dashboard from "./pages/Dashboard/index";
+import Error from "./pages/Error/index";
 
 const router = createBrowserRouter([
   {
@@ -33,15 +33,6 @@ const router = createBrowserRouter([
     element: <Error />,
   },
 ]);
-
-const GlobalStyle = createGlobalStyle`
-* {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing:border-box;
-}  
-`;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

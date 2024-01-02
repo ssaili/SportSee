@@ -1,19 +1,7 @@
-import styled from "styled-components";
-import Header from "../../components/Header";
-import SideNavigationBar from "../../components/SideNavigationBar";
-
-const ComingSoonContainer = styled.div`
-  display: flex;
-  margin-left: 117px;
-  height: calc(100vh - 97px);
-`;
-
-const ComingSoonParagraph = styled.p`
-  text-align: center;
-  margin: auto;
-  font-weight: 500;
-  font-size: 48px;
-`;
+import PropTypes from "prop-types";
+import Header from "../../components/Header/index";
+import SideNavigationBar from "../../components/SideNavigationBar/index";
+import { ComingSoonContainer, ComingSoonParagraph } from "./style";
 
 function ComingSoon({ pageName }) {
   return (
@@ -28,5 +16,9 @@ function ComingSoon({ pageName }) {
     </>
   );
 }
+
+ComingSoon.propTypes = {
+  pageName: PropTypes.string.isRequired,
+};
 
 export default ComingSoon;
