@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import {
   MacronutrientCardContainer,
   MacronutrientCardIconContainer,
+  MacronutrientCardImg,
   MacronutrientCardValue,
   MacronutrientCardName,
 } from "./style";
@@ -19,7 +20,7 @@ function MacronutrientCard({
           background: macronutrientCardBackgroundColor,
         }}
       >
-        <img
+        <MacronutrientCardImg
           src={macronutrientCardIcon}
           alt={`${macronutrientCardName} icon`}
         />
