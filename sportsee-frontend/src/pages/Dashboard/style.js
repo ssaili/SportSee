@@ -9,10 +9,15 @@ const DashboardContainer = styled.div`
   padding-block: 2%;
 `;
 
-const DashboardUserFirstName = styled.p`
+const DashboardUserFirstNameContainer = styled.p`
   font-weight: 500;
   font-size: 48px;
 `;
+
+const DashboardUserFirstName = styled.span`
+  color: #ff0101;
+`;
+
 const DashboardUserGoal = styled.p`
   font-weight: 400;
   font-size: 18px;
@@ -48,6 +53,7 @@ const DashboardMacronutrientsContainer = styled.div`
 
 export {
   DashboardContainer,
+  DashboardUserFirstNameContainer,
   DashboardUserFirstName,
   DashboardUserGoal,
   DashboardDataContainer,

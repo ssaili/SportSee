@@ -9,12 +9,20 @@ function Profile() {
       <SideNavigationBar />
       <ProfileLinkContainer>
         <ProfileLinkDiv key="12">
-          <ProfileLink to="12">Profil utilisateur n°12 - Mock</ProfileLink>
-          <ProfileLink to="12">Profil utilisateur n°12 - API</ProfileLink>
+          <ProfileLink to="12" state={{ mockOrApiData: "mockData" }}>
+            Profil utilisateur n°12 - Mock
+          </ProfileLink>
+          <ProfileLink to="12" state={{ mockOrApiData: "apiData" }}>
+            Profil utilisateur n°12 - API
+          </ProfileLink>
         </ProfileLinkDiv>
         <ProfileLinkDiv key="18">
-          <ProfileLink to="18">Profil utilisateur n°18 - Mock</ProfileLink>
-          <ProfileLink to="18">Profil utilisateur n°18 - API</ProfileLink>
+          <ProfileLink to="18" state={{ mockOrApiData: "apiData" }}>
+            Profil utilisateur n°18 - Mock
+          </ProfileLink>
+          <ProfileLink to="18" state={{ mockOrApiData: "apiData" }}>
+            Profil utilisateur n°18 - API
+          </ProfileLink>
         </ProfileLinkDiv>
       </ProfileLinkContainer>
     </>
