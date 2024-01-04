@@ -4,6 +4,7 @@ function ChartCard({
   chartCardContainerBackgroundColor,
   chartCardContainerWidth,
   chartCardContainerHeight,
+  children,
 }) {
   return (
     <div
@@ -12,7 +13,9 @@ function ChartCard({
         width: chartCardContainerWidth,
         height: chartCardContainerHeight,
       }}
-    ></div>
+    >
+      {children}
+    </div>
   );
 }
 
@@ -20,6 +23,7 @@ ChartCard.propTypes = {
   chartCardContainerBackgroundColor: PropTypes.string.isRequired,
   chartCardContainerWidth: PropTypes.string.isRequired,
   chartCardContainerHeight: PropTypes.string.isRequired,
+  children: PropTypes.object.isRequired,
 };
 
 export default ChartCard;

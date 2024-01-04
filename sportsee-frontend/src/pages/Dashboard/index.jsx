@@ -1,6 +1,7 @@
 import { useLocation, useParams } from "react-router-dom";
 import Header from "../../components/Header/index";
 import SideNavigationBar from "../../components/SideNavigationBar/index";
+import ActivityChart from "../../components/ActivityChart/index";
 import Error from "../Error/index";
 import {
   DashboardContainer,
@@ -54,7 +55,9 @@ function Dashboard() {
                 chartCardContainerBackgroundColor="#FBFBFB"
                 chartCardContainerWidth="100%"
                 chartCardContainerHeight="52%"
-              ></ChartCard>
+              >
+                <ActivityChart />
+              </ChartCard>
               <DashboardLowerGraphicsContainer>
                 <ChartCard
                   chartCardContainerBackgroundColor="#FF0000"
