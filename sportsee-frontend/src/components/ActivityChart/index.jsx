@@ -1,18 +1,19 @@
 import { USER_ACTIVITY } from "../../data/mockData";
+import { ActivityChartContainer, ActivityChartTitle } from "./style";
 import {
-  ResponsiveContainer,
   BarChart,
   CartesianGrid,
   XAxis,
   YAxis,
-  Tooltip,
   Legend,
+  Tooltip,
   Bar,
 } from "recharts";
 
 function ActivityChart() {
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ActivityChartContainer width="100%" height="100%">
+      <ActivityChartTitle>Activité quotidienne</ActivityChartTitle>
       <BarChart
         data={USER_ACTIVITY[0].sessions}
         margin={{
@@ -27,11 +28,13 @@ function ActivityChart() {
         <CartesianGrid strokeDasharray="3" vertical={false} />
         <XAxis
           dataKey="day"
+          tick={{ fill: "#9B9EAC" }}
           tickLine={false}
           tickFormatter={(date) => new Date(date).getDate()}
           tickMargin={15}
           stroke="#DEDEDE"
           strokeWidth={2}
+          scale="point"
         />
         <YAxis
           yAxisId="right"
@@ -39,9 +42,10 @@ function ActivityChart() {
           stroke="#282D30"
           axisLine={false}
           tickLine={false}
+          tick={{ fill: "#9B9EAC" }}
           tickCount={3}
           domain={["dataMin - 1", "dataMax"]}
-          tickMargin={20}
+          tickMargin={40}
         />
         <YAxis yAxisId="left" orientation="left" stroke="#E60000" hide />
         <Tooltip />
@@ -51,6 +55,9 @@ function ActivityChart() {
           iconSize={8}
           iconType="circle"
           height={80}
+          formatter={(value) => (
+            <span style={{ color: "#74798C" }}>{value}</span>
+          )}
         />
         <Bar
           yAxisId="right"
@@ -67,7 +74,7 @@ function ActivityChart() {
           name="Calories brûlées (kCal)"
         />
       </BarChart>
-    </ResponsiveContainer>
+    </ActivityChartContainer>
   );
 }
 
