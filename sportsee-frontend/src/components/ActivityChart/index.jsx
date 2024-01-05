@@ -30,6 +30,8 @@ function ActivityChart() {
           tickLine={false}
           tickFormatter={(date) => new Date(date).getDate()}
           tickMargin={15}
+          stroke="#DEDEDE"
+          strokeWidth={2}
         />
         <YAxis
           yAxisId="right"

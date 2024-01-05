@@ -2,6 +2,9 @@ import { useLocation, useParams } from "react-router-dom";
 import Header from "../../components/Header/index";
 import SideNavigationBar from "../../components/SideNavigationBar/index";
 import ActivityChart from "../../components/ActivityChart/index";
+import AverageSessionsChart from "../../components/AverageSessionsChart";
+import PerformanceChart from "../../components/PerformanceChart";
+import GoalChart from "../../components/GoalChart";
 import Error from "../Error/index";
 import {
   DashboardContainer,
@@ -63,17 +66,23 @@ function Dashboard() {
                   chartCardContainerBackgroundColor="#FF0000"
                   chartCardContainerWidth="30%"
                   chartCardContainerHeight="100%"
-                ></ChartCard>
+                >
+                  <AverageSessionsChart />
+                </ChartCard>
                 <ChartCard
                   chartCardContainerBackgroundColor="#282D30"
                   chartCardContainerWidth="30%"
                   chartCardContainerHeight="100%"
-                ></ChartCard>
+                >
+                  <PerformanceChart />
+                </ChartCard>
                 <ChartCard
                   chartCardContainerBackgroundColor="#FBFBFB"
                   chartCardContainerWidth="30%"
                   chartCardContainerHeight="100%"
-                ></ChartCard>
+                >
+                  <GoalChart />
+                </ChartCard>
               </DashboardLowerGraphicsContainer>
             </DashboardGraphicsContainer>
             <DashboardMacronutrientsContainer>
