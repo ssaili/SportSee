@@ -1,21 +1,22 @@
+import { Link } from "react-router-dom";
 import Header from "../../components/Header/index";
 import SideNavigationBar from "../../components/SideNavigationBar/index";
-import { ErrorSection, ErrorNumber, ErrorHomepageLink } from "./style";
+import "./style.scss";
 
 function Error() {
   return (
     <>
       <Header />
       <SideNavigationBar />
-      <ErrorSection>
-        <ErrorNumber>
+      <div className="error">
+        <p className="error__number">
           Erreur 404 😒
           <br />
-          <ErrorHomepageLink to="/">
+          <Link className="error__homepage-link" to="/">
             Retourner sur la page d'accueil
-          </ErrorHomepageLink>
-        </ErrorNumber>
-      </ErrorSection>
+          </Link>
+        </p>
+      </div>
     </>
   );
 }

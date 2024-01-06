@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import GlobalStyle from "./style";
+import "./style.scss";
 import ComingSoon from "./pages/ComingSoon/index";
 import Profile from "./pages/Profile/index";
 import Dashboard from "./pages/Dashboard/index";
@@ -37,7 +37,6 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <GlobalStyle />
     <RouterProvider router={router} />
   </React.StrictMode>,
 );

@@ -6,16 +6,7 @@ import AverageSessionsChart from "../../components/AverageSessionsChart";
 import PerformanceChart from "../../components/PerformanceChart";
 import GoalChart from "../../components/GoalChart";
 import Error from "../Error/index";
-import {
-  DashboardContainer,
-  DashboardUserFirstNameContainer,
-  DashboardUserFirstName,
-  DashboardUserGoal,
-  DashboardDataContainer,
-  DashboardGraphicsContainer,
-  DashboardLowerGraphicsContainer,
-  DashboardMacronutrientsContainer,
-} from "./style";
+import "./style.scss";
 import { USER_MAIN_DATA } from "../../data/mockData";
 import MacronutrientCard from "../../components/MacronutrientCard";
 import calorieIcon from "../../assets/icons/calorie-icon.png";
@@ -42,18 +33,18 @@ function Dashboard() {
       <>
         <Header />
         <SideNavigationBar />
-        <DashboardContainer>
-          <DashboardUserFirstNameContainer>
+        <div className="dashboard">
+          <p className="dashboard__greeting">
             Bonjour{" "}
-            <DashboardUserFirstName>
+            <span className="dashboard__user-first-name">
               {profileIndexMainData[0].userInfos.firstName}
-            </DashboardUserFirstName>
-          </DashboardUserFirstNameContainer>
-          <DashboardUserGoal>
+            </span>
+          </p>
+          <p className="dashboard__user-goal">
             Félicitation ! Vous avez explosé vos objectifs hier 👏
-          </DashboardUserGoal>
-          <DashboardDataContainer>
-            <DashboardGraphicsContainer>
+          </p>
+          <div className="dashboard__data-container">
+            <div className="dashboard__charts-container">
               <ChartCard
                 chartCardContainerBackgroundColor="#FBFBFB"
                 chartCardContainerWidth="100%"
@@ -61,7 +52,7 @@ function Dashboard() {
               >
                 <ActivityChart />
               </ChartCard>
-              <DashboardLowerGraphicsContainer>
+              <div className="dashboard__lower-charts-container">
                 <ChartCard
                   chartCardContainerBackgroundColor="#FF0000"
                   chartCardContainerWidth="30%"
@@ -83,9 +74,9 @@ function Dashboard() {
                 >
                   <GoalChart />
                 </ChartCard>
-              </DashboardLowerGraphicsContainer>
-            </DashboardGraphicsContainer>
-            <DashboardMacronutrientsContainer>
+              </div>
+            </div>
+            <div className="dashboard__macronutrient-container">
               <MacronutrientCard
                 macronutrientCardBackgroundColor="rgba(255, 0, 0, 0.07)"
                 macronutrientCardIcon={calorieIcon}
@@ -118,9 +109,9 @@ function Dashboard() {
                   "en-US",
                 )}g`}
               />
-            </DashboardMacronutrientsContainer>
-          </DashboardDataContainer>
-        </DashboardContainer>
+            </div>
+          </div>
+        </div>
       </>
     );
   }

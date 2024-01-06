@@ -1,31 +1,34 @@
-import {
-  HeaderTag,
-  HeaderImage,
-  HeaderUnorderedList,
-  HeaderList,
-  HeaderNavLink,
-} from "./style";
+import { NavLink } from "react-router-dom";
+import "./style.scss";
 import sportseeLogo from "../../assets/images/sportsee-logo.png";
 
 function Header() {
   return (
-    <HeaderTag>
-      <HeaderImage src={sportseeLogo} alt="sportsee logo" />
-      <HeaderUnorderedList>
-        <HeaderList>
-          <HeaderNavLink to="/">Accueil</HeaderNavLink>
-        </HeaderList>
-        <HeaderList>
-          <HeaderNavLink to="/profile">Profil</HeaderNavLink>
-        </HeaderList>
-        <HeaderList>
-          <HeaderNavLink to="/settings">Réglages</HeaderNavLink>
-        </HeaderList>
-        <HeaderList>
-          <HeaderNavLink to="/community">Communauté</HeaderNavLink>
-        </HeaderList>
-      </HeaderUnorderedList>
-    </HeaderTag>
+    <header className="header">
+      <img className="header__logo" src={sportseeLogo} alt="sportsee logo" />
+      <ul className="header__navigation">
+        <li className="header__navigation-item">
+          <NavLink className="header__navigation-item-navlink" to="/">
+            Accueil
+          </NavLink>
+        </li>
+        <li className="header__navigation-item">
+          <NavLink className="header__navigation-item-navlink" to="/profile">
+            Profil
+          </NavLink>
+        </li>
+        <li className="header__navigation-item">
+          <NavLink className="header__navigation-item-navlink" to="/settings">
+            Réglages
+          </NavLink>
+        </li>
+        <li className="header__navigation-item">
+          <NavLink className="header__navigation-item-navlink" to="/community">
+            Communauté
+          </NavLink>
+        </li>
+      </ul>
+    </header>
   );
 }
 

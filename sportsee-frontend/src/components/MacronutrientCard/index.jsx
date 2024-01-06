@@ -1,11 +1,5 @@
 import PropTypes from "prop-types";
-import {
-  MacronutrientCardContainer,
-  MacronutrientCardIconContainer,
-  MacronutrientCardImg,
-  MacronutrientCardValue,
-  MacronutrientCardName,
-} from "./style";
+import "./style.scss";
 
 function MacronutrientCard({
   macronutrientCardIcon,
@@ -14,24 +8,24 @@ function MacronutrientCard({
   macronutrientCardValue,
 }) {
   return (
-    <MacronutrientCardContainer>
-      <MacronutrientCardIconContainer
+    <div className="macronutrient-card">
+      <div
+        className="macronutrient-card__icon-container"
         style={{
           background: macronutrientCardBackgroundColor,
         }}
       >
-        <MacronutrientCardImg
+        <img
+          className="macronutrient-card__icon"
           src={macronutrientCardIcon}
           alt={`${macronutrientCardName} icon`}
         />
-      </MacronutrientCardIconContainer>
-      <div>
-        <MacronutrientCardValue>
-          {macronutrientCardValue}
-        </MacronutrientCardValue>
-        <MacronutrientCardName>{macronutrientCardName}</MacronutrientCardName>
       </div>
-    </MacronutrientCardContainer>
+      <div>
+        <p className="macronutrient-card__value">{macronutrientCardValue}</p>
+        <p className="macronutrient-card__name">{macronutrientCardName}</p>
+      </div>
+    </div>
   );
 }
 

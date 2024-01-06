@@ -1,30 +1,47 @@
+import { Link } from "react-router-dom";
 import Header from "../../components/Header/index";
 import SideNavigationBar from "../../components/SideNavigationBar/index";
-import { ProfileLinkContainer, ProfileLinkDiv, ProfileLink } from "./style";
+import "./style.scss";
 
 function Profile() {
   return (
     <>
       <Header />
       <SideNavigationBar />
-      <ProfileLinkContainer>
-        <ProfileLinkDiv key="12">
-          <ProfileLink to="12" state={{ mockOrApiData: "mockData" }}>
+      <div className="profile">
+        <div className="profile__links-container" key="12">
+          <Link
+            className="profile__link"
+            to="12"
+            state={{ mockOrApiData: "mockData" }}
+          >
             Profil utilisateur n°12 - Mock
-          </ProfileLink>
-          <ProfileLink to="12" state={{ mockOrApiData: "apiData" }}>
+          </Link>
+          <Link
+            className="profile__link"
+            to="12"
+            state={{ mockOrApiData: "apiData" }}
+          >
             Profil utilisateur n°12 - API
-          </ProfileLink>
-        </ProfileLinkDiv>
-        <ProfileLinkDiv key="18">
-          <ProfileLink to="18" state={{ mockOrApiData: "apiData" }}>
+          </Link>
+        </div>
+        <div className="profile__links-container" key="18">
+          <Link
+            className="profile__link"
+            to="18"
+            state={{ mockOrApiData: "apiData" }}
+          >
             Profil utilisateur n°18 - Mock
-          </ProfileLink>
-          <ProfileLink to="18" state={{ mockOrApiData: "apiData" }}>
+          </Link>
+          <Link
+            className="profile__link"
+            to="18"
+            state={{ mockOrApiData: "apiData" }}
+          >
             Profil utilisateur n°18 - API
-          </ProfileLink>
-        </ProfileLinkDiv>
-      </ProfileLinkContainer>
+          </Link>
+        </div>
+      </div>
     </>
   );
 }

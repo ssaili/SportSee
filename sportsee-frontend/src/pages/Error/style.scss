@@ -1,0 +1,22 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  margin-left: 117px;
+  height: calc(100vh - 97px);
+
+  &__number {
+    text-align: center;
+    margin: auto;
+    color: #020203;
+    font-weight: 500;
+    font-size: 96px;
+  }
+
+  &__homepage-link {
+    font-size: 48px;
+
+    &:visited {
+      color: inherit;
+    }
+  }
+}

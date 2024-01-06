@@ -1,18 +1,18 @@
 import PropTypes from "prop-types";
 import Header from "../../components/Header/index";
 import SideNavigationBar from "../../components/SideNavigationBar/index";
-import { ComingSoonContainer, ComingSoonParagraph } from "./style";
+import "./style.scss";
 
 function ComingSoon({ pageName }) {
   return (
     <>
       <Header />
       <SideNavigationBar />
-      <ComingSoonContainer>
-        <ComingSoonParagraph>
+      <div className="coming-soon">
+        <p className="coming-soon__text">
           La page {pageName} sera bientôt en ligne, merci de patienter 🙏
-        </ComingSoonParagraph>
-      </ComingSoonContainer>
+        </p>
+      </div>
     </>
   );
 }
