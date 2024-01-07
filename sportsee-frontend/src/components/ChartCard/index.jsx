@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 function ChartCard({
+  className,
   chartCardContainerBackgroundColor,
   chartCardContainerWidth,
   chartCardContainerHeight,
@@ -8,6 +9,7 @@ function ChartCard({
 }) {
   return (
     <div
+      className={className}
       style={{
         background: chartCardContainerBackgroundColor,
         width: chartCardContainerWidth,

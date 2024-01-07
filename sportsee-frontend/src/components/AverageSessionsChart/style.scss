@@ -1,0 +1,20 @@
+.average-sessions-chart {
+  display: flex;
+  align-items: end;
+
+  .recharts {
+    &-responsive-container {
+      position: relative;
+    }
+
+    &-linechart-title {
+      position: absolute;
+      width: 150px;
+      top: -25%;
+      left: 35px;
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}

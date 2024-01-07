@@ -46,6 +46,7 @@ function Dashboard() {
           <div className="dashboard__data-container">
             <div className="dashboard__charts-container">
               <ChartCard
+                className="activity-chart"
                 chartCardContainerBackgroundColor="#FBFBFB"
                 chartCardContainerWidth="100%"
                 chartCardContainerHeight="52%"
@@ -54,6 +55,7 @@ function Dashboard() {
               </ChartCard>
               <div className="dashboard__lower-charts-container">
                 <ChartCard
+                  className="average-sessions-chart"
                   chartCardContainerBackgroundColor="#FF0000"
                   chartCardContainerWidth="30%"
                   chartCardContainerHeight="100%"
@@ -61,6 +63,7 @@ function Dashboard() {
                   <AverageSessionsChart />
                 </ChartCard>
                 <ChartCard
+                  className="performance-chart"
                   chartCardContainerBackgroundColor="#282D30"
                   chartCardContainerWidth="30%"
                   chartCardContainerHeight="100%"
@@ -68,6 +71,7 @@ function Dashboard() {
                   <PerformanceChart />
                 </ChartCard>
                 <ChartCard
+                  className="goal-chart"
                   chartCardContainerBackgroundColor="#FBFBFB"
                   chartCardContainerWidth="30%"
                   chartCardContainerHeight="100%"
