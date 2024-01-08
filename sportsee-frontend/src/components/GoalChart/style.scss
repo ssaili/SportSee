@@ -1,0 +1,40 @@
+.goal-chart {
+  .recharts {
+    &-responsive-container {
+      position: relative;
+    }
+
+    &-radialchart-title {
+      position: absolute;
+      top: 25px;
+      left: 30px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #20253a;
+
+      @media (max-width: 1439px) {
+        flex-direction: column;
+        top: 15px;
+        left: 20px;
+      }
+    }
+
+    &-radialchart-description {
+      position: absolute;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      color: #74798c;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      &-score {
+        font-size: 26px;
+        font-weight: 700;
+        color: #282d30;
+      }
+    }
+  }
+}
