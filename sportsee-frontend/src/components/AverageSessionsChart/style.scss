@@ -10,11 +10,30 @@
     &-linechart-title {
       position: absolute;
       width: 150px;
-      top: -25%;
+      top: 30px;
       left: 35px;
       font-size: 15px;
       font-weight: 500;
       color: rgba(255, 255, 255, 0.5);
+    }
+
+    &-linechart-tooltip {
+      display: flex;
+      align-items: center;
+      padding-inline: 5px;
+      height: 25px;
+      background-color: #ffffff;
+
+      &-value {
+        font-weight: 500;
+        font-size: 12px;
+        text-align: center;
+        color: #000000;
+
+        @media (max-width: 1439px) {
+          font-size: 10px;
+        }
+      }
     }
   }
 }

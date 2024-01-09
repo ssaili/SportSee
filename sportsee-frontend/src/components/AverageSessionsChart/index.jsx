@@ -1,4 +1,3 @@
-import { USER_AVERAGE_SESSIONS } from "../../data/mockData";
 import "./style.scss";
 import {
   ResponsiveContainer,
@@ -7,9 +6,10 @@ import {
   YAxis,
   Tooltip,
   Line,
+  Rectangle,
 } from "recharts";
 
-function AverageSessionsChart() {
+function AverageSessionsChart({ data }) {
   const formatDay = (day) => {
     switch (day) {
       case 1:
@@ -31,15 +31,41 @@ function AverageSessionsChart() {
     }
   };
 
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="recharts-linechart-tooltip">
+          <p className="recharts-linechart-tooltip-value">
+            {payload[0].value + " min"}
+          </p>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
+  const CustomCursor = ({ points }) => {
+    return (
+      <Rectangle
+        width={1000}
+        height={1000}
+        x={points[0].x}
+        y={points[0].y - 100}
+        style={{ background: "red", opacity: 0.1 }}
+      />
+    );
+  };
+
   return (
-    <ResponsiveContainer width="100%" height="70%">
+    <ResponsiveContainer width="100%" height="100%">
       <p className="recharts-linechart-title">Durée moyenne des sessions</p>
       <LineChart
-        data={USER_AVERAGE_SESSIONS[0].sessions}
-        margin={{ top: 0, right: 20, left: 20, bottom: 10 }}
+        data={data}
+        margin={{ top: 80, right: 20, left: 20, bottom: 10 }}
       >
         <defs>
-          <linearGradient id="colorUv">
+          <linearGradient id="lineColor">
             <stop offset="40%" stopColor="rgba(255,255,255,0.4)" />
             <stop offset="100%" stopColor="rgba(255,255,255,1)" />
           </linearGradient>
@@ -53,13 +79,13 @@ function AverageSessionsChart() {
           tickFormatter={formatDay}
         />
         <YAxis hide />
-        <Tooltip />
+        <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
         <Line
           type="monotone"
           dataKey="sessionLength"
           dot={false}
           strokeWidth={2}
-          stroke="url(#colorUv)"
+          stroke="url(#lineColor)"
         />
       </LineChart>
     </ResponsiveContainer>

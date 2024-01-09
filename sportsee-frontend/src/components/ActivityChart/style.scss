@@ -13,6 +13,26 @@
       color: #20253a;
     }
 
+    &-barchart-tooltip {
+      padding-inline: 5px;
+      height: 63px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      background-color: #e60000;
+
+      &-value {
+        font-weight: 500;
+        font-size: 12px;
+        text-align: center;
+        color: #ffffff;
+
+        @media (max-width: 1439px) {
+          font-size: 10px;
+        }
+      }
+    }
+
     &-legend-item {
       margin-right: 0 !important;
       margin-left: 30px;

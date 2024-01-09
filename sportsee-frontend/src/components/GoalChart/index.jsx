@@ -2,17 +2,17 @@ import { USER_MAIN_DATA } from "../../data/mockData";
 import "./style.scss";
 import { ResponsiveContainer, RadialBarChart, RadialBar } from "recharts";
 
-function GoalChart() {
-  const scoreValue = USER_MAIN_DATA[0].todayScore ?? USER_MAIN_DATA[0].score;
-  const data = [{ score: scoreValue }];
+function GoalChart({ data }) {
+  const scoreValue = data.todayScore ?? data.score;
+  const goalData = [{ score: scoreValue }];
 
   return (
     <ResponsiveContainer width="100%" height="100%">
       <p className="recharts-radialchart-title">Score</p>
       <p className="recharts-radialchart-description">
-        <span className="recharts-radialchart-description-score">{`${
-          scoreValue * 100
-        }%`}</span>
+        <span className="recharts-radialchart-description-score">
+          {scoreValue * 100 + "%"}
+        </span>
         <br />
         de votre
         <br />
@@ -20,7 +20,7 @@ function GoalChart() {
       </p>
       <RadialBarChart
         outerRadius="0%"
-        data={data}
+        data={goalData}
         startAngle={90}
         endAngle={450}
       >

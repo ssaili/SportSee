@@ -1,4 +1,3 @@
-import { USER_ACTIVITY } from "../../data/mockData";
 import "./style.scss";
 import {
   BarChart,
@@ -11,12 +10,29 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-function ActivityChart() {
+function ActivityChart({ data }) {
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="recharts-barchart-tooltip">
+          <p className="recharts-barchart-tooltip-value">
+            {payload[0].value + "kg"}
+          </p>
+          <p className="recharts-barchart-tooltip-value">
+            {payload[1].value + "Kcal"}
+          </p>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <p className="recharts-barchart-title">Activité quotidienne</p>
       <BarChart
-        data={USER_ACTIVITY[0].sessions}
+        data={data}
         margin={{
           top: 40,
           right: 40,
@@ -35,7 +51,6 @@ function ActivityChart() {
           tickMargin={15}
           stroke="#DEDEDE"
           strokeWidth={2}
-          scale="point"
         />
         <YAxis
           yAxisId="right"
@@ -48,7 +63,7 @@ function ActivityChart() {
           tickMargin={40}
         />
         <YAxis yAxisId="left" orientation="left" hide />
-        <Tooltip />
+        <Tooltip content={<CustomTooltip />} offset={30} />
         <Legend
           align="right"
           verticalAlign="top"

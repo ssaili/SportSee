@@ -7,7 +7,12 @@ import PerformanceChart from "../../components/PerformanceChart";
 import GoalChart from "../../components/GoalChart";
 import Error from "../Error/index";
 import "./style.scss";
-import { USER_MAIN_DATA } from "../../data/mockData";
+import {
+  USER_MAIN_DATA,
+  USER_ACTIVITY,
+  USER_AVERAGE_SESSIONS,
+  USER_PERFORMANCE,
+} from "../../data/mockData";
 import MacronutrientCard from "../../components/MacronutrientCard";
 import calorieIcon from "../../assets/icons/calorie-icon.png";
 import proteinIcon from "../../assets/icons/protein-icon.png";
@@ -25,8 +30,20 @@ function Dashboard() {
   if (!profileIndexRegex.test(profileIndex) && mockOrApiData === undefined) {
     return <Error />;
   } else {
-    const profileIndexMainData = USER_MAIN_DATA.filter(
+    const userMainData = USER_MAIN_DATA.filter(
       (user) => user.id === parseInt(profileIndex),
+    );
+
+    const userActivity = USER_ACTIVITY.filter(
+      (user) => user.userId === parseInt(profileIndex),
+    );
+
+    const userAverageSessions = USER_AVERAGE_SESSIONS.filter(
+      (user) => user.userId === parseInt(profileIndex),
+    );
+
+    const userPerformance = USER_PERFORMANCE.filter(
+      (user) => user.userId === parseInt(profileIndex),
     );
 
     return (
@@ -37,7 +54,7 @@ function Dashboard() {
           <p className="dashboard__greeting">
             Bonjour{" "}
             <span className="dashboard__user-first-name">
-              {profileIndexMainData[0].userInfos.firstName}
+              {userMainData[0].userInfos.firstName}
             </span>
           </p>
           <p className="dashboard__user-goal">
@@ -51,7 +68,7 @@ function Dashboard() {
                 chartCardContainerWidth="100%"
                 chartCardContainerHeight="52%"
               >
-                <ActivityChart />
+                <ActivityChart data={userActivity[0].sessions} />
               </ChartCard>
               <div className="dashboard__lower-charts-container">
                 <ChartCard
@@ -60,7 +77,9 @@ function Dashboard() {
                   chartCardContainerWidth="30%"
                   chartCardContainerHeight="100%"
                 >
-                  <AverageSessionsChart />
+                  <AverageSessionsChart
+                    data={userAverageSessions[0].sessions}
+                  />
                 </ChartCard>
                 <ChartCard
                   className="performance-chart"
@@ -68,7 +87,9 @@ function Dashboard() {
                   chartCardContainerWidth="30%"
                   chartCardContainerHeight="100%"
                 >
-                  <PerformanceChart />
+                  <PerformanceChart
+                    data={[...userPerformance[0].data].reverse()}
+                  />
                 </ChartCard>
                 <ChartCard
                   className="goal-chart"
@@ -76,7 +97,7 @@ function Dashboard() {
                   chartCardContainerWidth="30%"
                   chartCardContainerHeight="100%"
                 >
-                  <GoalChart />
+                  <GoalChart data={userMainData[0]} />
                 </ChartCard>
               </div>
             </div>
@@ -85,7 +106,7 @@ function Dashboard() {
                 macronutrientCardBackgroundColor="rgba(255, 0, 0, 0.07)"
                 macronutrientCardIcon={calorieIcon}
                 macronutrientCardName="Calories"
-                macronutrientCardValue={`${profileIndexMainData[0].keyData.calorieCount.toLocaleString(
+                macronutrientCardValue={`${userMainData[0].keyData.calorieCount.toLocaleString(
                   "en-US",
                 )}kCal`}
               />
@@ -93,7 +114,7 @@ function Dashboard() {
                 macronutrientCardBackgroundColor="rgba(74, 184, 255, 0.1)"
                 macronutrientCardIcon={proteinIcon}
                 macronutrientCardName="Proteines"
-                macronutrientCardValue={`${profileIndexMainData[0].keyData.proteinCount.toLocaleString(
+                macronutrientCardValue={`${userMainData[0].keyData.proteinCount.toLocaleString(
                   "en-US",
                 )}g`}
               />
@@ -101,7 +122,7 @@ function Dashboard() {
                 macronutrientCardBackgroundColor="rgba(249, 206, 35, 0.1)"
                 macronutrientCardIcon={carbohydrateIcon}
                 macronutrientCardName="Glucides"
-                macronutrientCardValue={`${profileIndexMainData[0].keyData.carbohydrateCount.toLocaleString(
+                macronutrientCardValue={`${userMainData[0].keyData.carbohydrateCount.toLocaleString(
                   "en-US",
                 )}g`}
               />
@@ -109,7 +130,7 @@ function Dashboard() {
                 macronutrientCardBackgroundColor="rgba(253, 81, 129, 0.1)"
                 macronutrientCardIcon={lipidIcon}
                 macronutrientCardName="Lipides"
-                macronutrientCardValue={`${profileIndexMainData[0].keyData.lipidCount.toLocaleString(
+                macronutrientCardValue={`${userMainData[0].keyData.lipidCount.toLocaleString(
                   "en-US",
                 )}g`}
               />

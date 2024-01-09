@@ -1,4 +1,3 @@
-import { USER_PERFORMANCE } from "../../data/mockData";
 import {
   ResponsiveContainer,
   RadarChart,
@@ -7,7 +6,7 @@ import {
   Radar,
 } from "recharts";
 
-function PerformanceChart() {
+function PerformanceChart({ data }) {
   const formatKind = (kind) => {
     switch (kind) {
       case 1:
@@ -29,7 +28,7 @@ function PerformanceChart() {
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <RadarChart data={[...USER_PERFORMANCE[0].data].reverse()}>
+      <RadarChart data={data}>
         <PolarGrid radialLines={false} stroke="#FFFFFF" />
         <PolarAngleAxis
           dataKey="kind"
