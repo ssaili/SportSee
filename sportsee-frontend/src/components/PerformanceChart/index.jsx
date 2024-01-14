@@ -1,3 +1,4 @@
+import "./style.scss";
 import {
   ResponsiveContainer,
   RadarChart,
@@ -28,7 +29,7 @@ function PerformanceChart({ data }) {
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <RadarChart data={data}>
+      <RadarChart data={data} outerRadius="70%">
         <PolarGrid radialLines={false} stroke="#FFFFFF" />
         <PolarAngleAxis
           dataKey="kind"

@@ -4,6 +4,13 @@
       position: relative;
     }
 
+    &-radial-bar-sectors {
+      @media (max-width: 1439px) {
+        width: 100px !important;
+        height: 100px !important;
+      }
+    }
+
     &-radialchart-title {
       position: absolute;
       top: 25px;
@@ -13,9 +20,9 @@
       color: #20253a;
 
       @media (max-width: 1439px) {
-        flex-direction: column;
-        top: 15px;
-        left: 20px;
+        top: 5px;
+        left: 10px;
+        font-size: 14px;
       }
     }
 
@@ -30,10 +37,18 @@
       left: 50%;
       transform: translate(-50%, -50%);
 
+      @media (max-width: 1439px) {
+        font-size: 14px;
+      }
+
       &-score {
         font-size: 26px;
         font-weight: 700;
         color: #282d30;
+
+        @media (max-width: 1439px) {
+          font-size: 22px;
+        }
       }
     }
   }

@@ -1,4 +1,3 @@
-import { USER_MAIN_DATA } from "../../data/mockData";
 import "./style.scss";
 import { ResponsiveContainer, RadialBarChart, RadialBar } from "recharts";
 
