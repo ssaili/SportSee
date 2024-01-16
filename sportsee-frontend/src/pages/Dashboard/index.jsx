@@ -1,4 +1,5 @@
 import { useLocation, useParams } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
 import Header from "../../components/Header/index";
 import SideNavigationBar from "../../components/SideNavigationBar/index";
 import ActivityChart from "../../components/ActivityChart/index";
@@ -19,127 +20,173 @@ import proteinIcon from "../../assets/icons/protein-icon.png";
 import carbohydrateIcon from "../../assets/icons/carbohydrate-icon.png";
 import lipidIcon from "../../assets/icons/lipid-icon.png";
 import ChartCard from "../../components/ChartCard";
+import Loader from "../../components/Loader";
 
 function Dashboard() {
   const { profileIndex } = useParams();
+  const { mockData } = useLocation().state ?? {};
+  const profileIndexRegex = /^(12|18)$/;
 
-  const { mockOrApiData } = useLocation().state ?? {};
+  const {
+    data: mainData,
+    loading: loadingMainData,
+    error: errorMainData,
+  } = useFetch(
+    mockData,
+    `http://localhost:3000/user/${profileIndex}`,
+    USER_MAIN_DATA,
+    profileIndex,
+  );
 
-  const profileIndexRegex = /^(([12])|([18]))$/;
+  const {
+    data: activity,
+    loading: loadingActivity,
+    error: errorActivity,
+  } = useFetch(
+    mockData,
+    `http://localhost:3000/user/${profileIndex}/activity`,
+    USER_ACTIVITY,
+    profileIndex,
+  );
 
-  if (!profileIndexRegex.test(profileIndex) && mockOrApiData === undefined) {
+  const {
+    data: averageSessions,
+    loading: loadingAverageSessions,
+    error: errorAverageSessions,
+  } = useFetch(
+    mockData,
+    `http://localhost:3000/user/${profileIndex}/average-sessions`,
+    USER_AVERAGE_SESSIONS,
+    profileIndex,
+  );
+
+  const {
+    data: performance,
+    loading: loadingPerformance,
+    error: errorPerformance,
+  } = useFetch(
+    mockData,
+    `http://localhost:3000/user/${profileIndex}/performance`,
+    USER_PERFORMANCE,
+    profileIndex,
+  );
+
+  const userMainData = mainData;
+  const userActivity = activity;
+  const userAverageSessions = averageSessions;
+  const userPerformance = performance;
+
+  if (!profileIndexRegex.test(profileIndex) || mockData === undefined) {
     return <Error />;
-  } else {
-    const userMainData = USER_MAIN_DATA.filter(
-      (user) => user.id === parseInt(profileIndex),
-    );
+  }
 
-    const userActivity = USER_ACTIVITY.filter(
-      (user) => user.userId === parseInt(profileIndex),
-    );
+  if (
+    errorMainData ||
+    errorActivity ||
+    errorAverageSessions ||
+    errorPerformance
+  ) {
+    return <Error />;
+  }
 
-    const userAverageSessions = USER_AVERAGE_SESSIONS.filter(
-      (user) => user.userId === parseInt(profileIndex),
-    );
+  if (
+    loadingMainData ||
+    loadingActivity ||
+    loadingAverageSessions ||
+    loadingPerformance
+  ) {
+    return <Loader />;
+  }
 
-    const userPerformance = USER_PERFORMANCE.filter(
-      (user) => user.userId === parseInt(profileIndex),
-    );
-
-    return (
-      <>
-        <Header />
-        <SideNavigationBar />
-        <div className="dashboard">
-          <p className="dashboard__greeting">
-            Bonjour{" "}
-            <span className="dashboard__user-first-name">
-              {userMainData[0].userInfos.firstName}
-            </span>
-          </p>
-          <p className="dashboard__user-goal">
-            Félicitation ! Vous avez explosé vos objectifs hier 👏
-          </p>
-          <div className="dashboard__data-container">
-            <div className="dashboard__charts-container">
+  return (
+    <>
+      <Header />
+      <SideNavigationBar />
+      <div className="dashboard">
+        <p className="dashboard__greeting">
+          Bonjour{" "}
+          <span className="dashboard__user-first-name">
+            {userMainData.userInfos.firstName}
+          </span>
+        </p>
+        <p className="dashboard__user-goal">
+          Félicitation ! Vous avez explosé vos objectifs hier 👏
+        </p>
+        <div className="dashboard__data-container">
+          <div className="dashboard__charts-container">
+            <ChartCard
+              className="activity-chart"
+              chartCardContainerBackgroundColor="#FBFBFB"
+              chartCardContainerWidth="100%"
+              chartCardContainerHeight="52%"
+            >
+              <ActivityChart data={userActivity.sessions} />
+            </ChartCard>
+            <div className="dashboard__lower-charts-container">
               <ChartCard
-                className="activity-chart"
-                chartCardContainerBackgroundColor="#FBFBFB"
-                chartCardContainerWidth="100%"
-                chartCardContainerHeight="52%"
+                className="average-sessions-chart"
+                chartCardContainerBackgroundColor="#FF0000"
+                chartCardContainerWidth="30%"
+                chartCardContainerHeight="100%"
               >
-                <ActivityChart data={userActivity[0].sessions} />
+                <AverageSessionsChart data={userAverageSessions.sessions} />
               </ChartCard>
-              <div className="dashboard__lower-charts-container">
-                <ChartCard
-                  className="average-sessions-chart"
-                  chartCardContainerBackgroundColor="#FF0000"
-                  chartCardContainerWidth="30%"
-                  chartCardContainerHeight="100%"
-                >
-                  <AverageSessionsChart
-                    data={userAverageSessions[0].sessions}
-                  />
-                </ChartCard>
-                <ChartCard
-                  className="performance-chart"
-                  chartCardContainerBackgroundColor="#282D30"
-                  chartCardContainerWidth="30%"
-                  chartCardContainerHeight="100%"
-                >
-                  <PerformanceChart
-                    data={[...userPerformance[0].data].reverse()}
-                  />
-                </ChartCard>
-                <ChartCard
-                  className="goal-chart"
-                  chartCardContainerBackgroundColor="#FBFBFB"
-                  chartCardContainerWidth="30%"
-                  chartCardContainerHeight="100%"
-                >
-                  <GoalChart data={userMainData[0]} />
-                </ChartCard>
-              </div>
-            </div>
-            <div className="dashboard__macronutrient-container">
-              <MacronutrientCard
-                macronutrientCardBackgroundColor="rgba(255, 0, 0, 0.07)"
-                macronutrientCardIcon={calorieIcon}
-                macronutrientCardName="Calories"
-                macronutrientCardValue={`${userMainData[0].keyData.calorieCount.toLocaleString(
-                  "en-US",
-                )}kCal`}
-              />
-              <MacronutrientCard
-                macronutrientCardBackgroundColor="rgba(74, 184, 255, 0.1)"
-                macronutrientCardIcon={proteinIcon}
-                macronutrientCardName="Proteines"
-                macronutrientCardValue={`${userMainData[0].keyData.proteinCount.toLocaleString(
-                  "en-US",
-                )}g`}
-              />
-              <MacronutrientCard
-                macronutrientCardBackgroundColor="rgba(249, 206, 35, 0.1)"
-                macronutrientCardIcon={carbohydrateIcon}
-                macronutrientCardName="Glucides"
-                macronutrientCardValue={`${userMainData[0].keyData.carbohydrateCount.toLocaleString(
-                  "en-US",
-                )}g`}
-              />
-              <MacronutrientCard
-                macronutrientCardBackgroundColor="rgba(253, 81, 129, 0.1)"
-                macronutrientCardIcon={lipidIcon}
-                macronutrientCardName="Lipides"
-                macronutrientCardValue={`${userMainData[0].keyData.lipidCount.toLocaleString(
-                  "en-US",
-                )}g`}
-              />
+              <ChartCard
+                className="performance-chart"
+                chartCardContainerBackgroundColor="#282D30"
+                chartCardContainerWidth="30%"
+                chartCardContainerHeight="100%"
+              >
+                <PerformanceChart data={[...userPerformance.data].reverse()} />
+              </ChartCard>
+              <ChartCard
+                className="goal-chart"
+                chartCardContainerBackgroundColor="#FBFBFB"
+                chartCardContainerWidth="30%"
+                chartCardContainerHeight="100%"
+              >
+                <GoalChart data={userMainData} />
+              </ChartCard>
             </div>
           </div>
+          <div className="dashboard__macronutrient-container">
+            <MacronutrientCard
+              macronutrientCardBackgroundColor="rgba(255, 0, 0, 0.07)"
+              macronutrientCardIcon={calorieIcon}
+              macronutrientCardName="Calories"
+              macronutrientCardValue={`${userMainData.keyData.calorieCount.toLocaleString(
+                "en-US",
+              )}kCal`}
+            />
+            <MacronutrientCard
+              macronutrientCardBackgroundColor="rgba(74, 184, 255, 0.1)"
+              macronutrientCardIcon={proteinIcon}
+              macronutrientCardName="Proteines"
+              macronutrientCardValue={`${userMainData.keyData.proteinCount.toLocaleString(
+                "en-US",
+              )}g`}
+            />
+            <MacronutrientCard
+              macronutrientCardBackgroundColor="rgba(249, 206, 35, 0.1)"
+              macronutrientCardIcon={carbohydrateIcon}
+              macronutrientCardName="Glucides"
+              macronutrientCardValue={`${userMainData.keyData.carbohydrateCount.toLocaleString(
+                "en-US",
+              )}g`}
+            />
+            <MacronutrientCard
+              macronutrientCardBackgroundColor="rgba(253, 81, 129, 0.1)"
+              macronutrientCardIcon={lipidIcon}
+              macronutrientCardName="Lipides"
+              macronutrientCardValue={`${userMainData.keyData.lipidCount.toLocaleString(
+                "en-US",
+              )}g`}
+            />
+          </div>
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
 }
 
 export default Dashboard;

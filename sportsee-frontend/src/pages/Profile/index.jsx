@@ -10,34 +10,18 @@ function Profile() {
       <SideNavigationBar />
       <div className="profile">
         <div className="profile__links-container" key="12">
-          <Link
-            className="profile__link"
-            to="12"
-            state={{ mockOrApiData: "mockData" }}
-          >
+          <Link className="profile__link" to="12" state={{ mockData: true }}>
             Profil utilisateur n°12 - Mock
           </Link>
-          <Link
-            className="profile__link"
-            to="12"
-            state={{ mockOrApiData: "apiData" }}
-          >
+          <Link className="profile__link" to="12" state={{ mockData: false }}>
             Profil utilisateur n°12 - API
           </Link>
         </div>
         <div className="profile__links-container" key="18">
-          <Link
-            className="profile__link"
-            to="18"
-            state={{ mockOrApiData: "apiData" }}
-          >
+          <Link className="profile__link" to="18" state={{ mockData: true }}>
             Profil utilisateur n°18 - Mock
           </Link>
-          <Link
-            className="profile__link"
-            to="18"
-            state={{ mockOrApiData: "apiData" }}
-          >
+          <Link className="profile__link" to="18" state={{ mockData: false }}>
             Profil utilisateur n°18 - API
           </Link>
         </div>
