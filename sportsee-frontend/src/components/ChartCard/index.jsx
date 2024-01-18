@@ -22,6 +22,7 @@ function ChartCard({
 }
 
 ChartCard.propTypes = {
+  className: PropTypes.string.isRequired,
   chartCardContainerBackgroundColor: PropTypes.string.isRequired,
   chartCardContainerWidth: PropTypes.string.isRequired,
   chartCardContainerHeight: PropTypes.string.isRequired,

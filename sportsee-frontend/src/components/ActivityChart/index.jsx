@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./style.scss";
 import {
   BarChart,
@@ -89,5 +90,9 @@ function ActivityChart({ data }) {
     </ResponsiveContainer>
   );
 }
+
+ActivityChart.propTypes = {
+  data: PropTypes.array.isRequired,
+};
 
 export default ActivityChart;

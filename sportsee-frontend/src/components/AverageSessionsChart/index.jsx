@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./style.scss";
 import {
   ResponsiveContainer,
@@ -91,5 +92,9 @@ function AverageSessionsChart({ data }) {
     </ResponsiveContainer>
   );
 }
+
+AverageSessionsChart.propTypes = {
+  data: PropTypes.array.isRequired,
+};
 
 export default AverageSessionsChart;

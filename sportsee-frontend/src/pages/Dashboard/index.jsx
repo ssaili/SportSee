@@ -1,13 +1,15 @@
 import { useLocation, useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import "./style.scss";
 import Header from "../../components/Header/index";
 import SideNavigationBar from "../../components/SideNavigationBar/index";
+import ChartCard from "../../components/ChartCard";
+import Loader from "../../components/Loader";
 import ActivityChart from "../../components/ActivityChart/index";
 import AverageSessionsChart from "../../components/AverageSessionsChart";
 import PerformanceChart from "../../components/PerformanceChart";
 import GoalChart from "../../components/GoalChart";
 import Error from "../Error/index";
-import "./style.scss";
 import {
   USER_MAIN_DATA,
   USER_ACTIVITY,
@@ -19,8 +21,6 @@ import calorieIcon from "../../assets/icons/calorie-icon.png";
 import proteinIcon from "../../assets/icons/protein-icon.png";
 import carbohydrateIcon from "../../assets/icons/carbohydrate-icon.png";
 import lipidIcon from "../../assets/icons/lipid-icon.png";
-import ChartCard from "../../components/ChartCard";
-import Loader from "../../components/Loader";
 
 function Dashboard() {
   const { profileIndex } = useParams();

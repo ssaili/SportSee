@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./style.scss";
 import {
   ResponsiveContainer,
@@ -51,5 +52,9 @@ function PerformanceChart({ data }) {
     </ResponsiveContainer>
   );
 }
+
+PerformanceChart.propTypes = {
+  data: PropTypes.array.isRequired,
+};
 
 export default PerformanceChart;

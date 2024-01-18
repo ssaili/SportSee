@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./style.scss";
 import { ResponsiveContainer, RadialBarChart, RadialBar } from "recharts";
 
@@ -40,5 +41,9 @@ function GoalChart({ data }) {
     </ResponsiveContainer>
   );
 }
+
+GoalChart.propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
 export default GoalChart;
