@@ -26,7 +26,7 @@ function GoalChart({ data }) {
         <RadialBar
           data={[{ score: 1 }]}
           dataKey="score"
-          barSize={160}
+          barSize={150}
           fill="#FFF"
           isAnimationActive={false}
         />
