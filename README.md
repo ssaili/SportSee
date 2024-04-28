@@ -19,12 +19,25 @@ Ce dépôt contient le code source de la nouvelle page profil utilisateur pour l
 ![API REST](https://img.shields.io/badge/API-REST-brightgreen?style=for-the-badge)
 
 ## 📦 Installation
+### Avec données mockées
 
 1. Clonez ce dépôt : `git clone https://github.com/ssaili/SportSee.git`
 2. Accédez au répertoire du projet : `cd SportSee`
-3. Accédez au sous dossier "sportsee-frontend" via la commande : `cd sportsee-frontend`
+3. Accédez au sous-dossier "sportsee-frontend" via la commande : `cd sportsee-frontend`
 4. Installez les dépendances `npm install`
 5. Démarrez l'application en mode développement : `npm start`
 6. Ouvrez `http://localhost:3001` dans votre navigateur
 
-⚠️ **Attention** : Seule les données mockées sont disponibles via cette installation.
+⚠️ **Attention** : Seules les données mockées sont disponibles via cette installation.
+
+### Avec données de l'API
+
+1. Clonez ce dépôt : `git clone https://github.com/ssaili/SportSee.git`
+2. Accédez au répertoire du projet : `cd SportSee`
+3. Suivez les instructions du [guide d'installation de l'API](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard) pour configurer et démarrer le serveur backend.
+4. Accédez au sous-dossier "sportsee-frontend" via la commande : `cd sportsee-frontend`
+5. Installez les dépendances `npm install`
+6. Démarrez l'application en mode développement : `npm start`
+7. Ouvrez `http://localhost:3001` dans votre navigateur
+
+⚠️ **Attention** : Assurez-vous que le serveur backend est en cours d'exécution pour que l'application puisse récupérer les données de l'API.
