@@ -4,7 +4,7 @@ Ce dépôt contient le code source de la nouvelle page profil utilisateur pour l
 ⚠️ **Attention** : Cette application n'est pas responsive pour le moment et fonctionne uniquement à partir d'une largeur d'écran de 1024px.
 
 ## 📸 Capture d'écran
-![Capture d'écran de l'application SportSee](sportsee-frontend/src/assets/images/sportsee-logo.png)
+![Capture d'écran de l'application SportSee](sportsee-frontend/src/assets/images/sportsee-app-screenshot.png)
 
 Aperçu de la page profil utilisateur avec les graphiques d'activité.
 
