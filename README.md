@@ -1,5 +1,6 @@
 # 📂 SportSee
 Ce dépôt contient le code source de la nouvelle page profil utilisateur pour l'application SportSee, une startup dédiée au coaching sportif. Cette page permet à l'utilisateur de suivre le nombre de sessions réalisées ainsi que le nombre de calories brûlées, grâce à des graphiques interactifs.
+Les données affichées sont récupérées via une API REST ou, en mode développement, à partir de données mockées.
 
 ⚠️ **Attention** : Cette application n'est pas responsive pour le moment et fonctionne uniquement à partir d'une largeur d'écran de 1024px.
 
