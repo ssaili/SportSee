@@ -3,6 +3,11 @@ Ce dépôt contient le code source de la nouvelle page profil utilisateur pour l
 
 ⚠️ **Attention** : Cette application n'est pas responsive pour le moment et fonctionne uniquement à partir d'une largeur d'écran de 1024px.
 
+## 📸 Capture d'écran
+![Capture d'écran de l'application SportSee](sportsee-frontend/src/assets/images/sportsee-logo.png)
+
+Aperçu de la page profil utilisateur avec les graphiques d'activité.
+
 ## 🚀 Fonctionnalités
 - **Graphique d'activité quotidienne** : Affiche le nombre de calories brûlées et les kilogrammes de protéines, glucides et lipides consommés par jour.
 - **Graphique de sessions** : Représente le nombre de sessions réalisées par semaine, avec la durée de chaque session.
